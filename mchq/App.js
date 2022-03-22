@@ -76,6 +76,7 @@ const App: () => Node = () => {
           </Section>
           <Section title="See Your Changes">
             <ReloadInstructions />
+            Hello World !
           </Section>
           <Section title="Debug">
             <DebugInstructions />
