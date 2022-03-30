@@ -10,6 +10,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@morrowdigital/watermelondb-expo-plugin": "^1.0.0",
     "@nozbe/watermelondb": "^0.24.0",
     "@react-navigation/native": "^6.0.8",
     "@react-navigation/native-stack": "^6.5.2",
@@ -23,7 +24,8 @@
     "react-native-web": "0.17.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9"
+    "@babel/core": "^7.12.9",
+    "better-sqlite3": "^7.5.0"
   },
   "private": true
 }
