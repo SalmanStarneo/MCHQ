@@ -1,0 +1,43 @@
+import React from 'react';
+import { Button, StyleSheet, Text, View } from 'react-native';
+import { withSafeAreaInsets } from 'react-native-safe-area-context';
+
+// const NavigationScreen = props =>{
+//     props.navigation.navigate('main');
+// }
+
+const Login= ({navigation}) =>{
+    return (
+      <View style={styles.container}>
+        <Text style={styles.texts}>MCHQ Login app screen</Text>
+        <TextInput
+        placeholder="Username"
+        style={{ height: 200, padding: 10, backgroundColor: 'white' }}
+        value={postText}
+        onChangeText={setPostText}
+      />
+        <Button style={styles.buttons} title='log in' onPress={() => navigation.navigate("Main",{params: { post: postText },merge:true})}/>
+      </View>
+    );
+  }
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: '#6A5ACD',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },   
+     texts:{
+      color:"white",
+      fontSize: 30,
+      textAlign:"center",
+      fontWeight:'bold',
+      margin:10
+    },
+    buttons:{
+      backgroundColor:"black",
+      color:"white",
+    },
+  });
+
+  export default Login;
