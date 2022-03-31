@@ -12,6 +12,7 @@
   "dependencies": {
     "@morrowdigital/watermelondb-expo-plugin": "^1.0.0",
     "@nozbe/watermelondb": "^0.24.0",
+    "@react-native-community/datetimepicker": "4.0.0",
     "@react-navigation/native": "^6.0.8",
     "@react-navigation/native-stack": "^6.5.2",
     "expo": "~44.0.0",
