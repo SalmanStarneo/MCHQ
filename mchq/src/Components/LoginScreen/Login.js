@@ -1,9 +1,11 @@
 import React from 'react';
-import { Button, StyleSheet, Text, TextInput } from 'react-native';
-import { withSafeAreaInsets } from 'react-native-safe-area-context';
-
+import { View } from 'react-native';
+// import { withSafeAreaInsets } from 'react-native-safe-area-context';
+import { Formik } from 'formik';
 import{
-  StyledContainer, InnerContainer, PageLogo, PageTitle
+  StyledContainer, InnerContainer, PageLogo,
+  PageTitle, StyledFormArea, LeftSideIcon, 
+  StyledInputLabel, StyledTextInput, RightSideIcon
 } from './../styles/style';
 
 const Login= ({navigation}) =>{
@@ -14,16 +16,22 @@ const Login= ({navigation}) =>{
           <PageTitle>Mobile College Helper QR</PageTitle>
         </InnerContainer>
         <Text style={styles.texts}>MCHQ Login app screen</Text>
-        <TextInput
-        placeholder="Username"
-        style={styles.inputs}/>
-        <TextInput
-        placeholder="password"
-        style={styles.inputs}/>
-        <Text style={styles.texts}>-----------</Text>
+        <Formik
+          initialValues={{email:'', password:''}}
+          onSubmit={(values) => {console.log(values);}}
+        >
+          {(handleChange, handleBlur, handleSubmit, values) => <StyledFormArea></StyledFormArea>}
+        </Formik>
         <Button title='log in' onPress={() => navigation.navigate("Main")}/>
       </StyledContainer>
     );
-  }
+  };
 
+  const MyTextInput = ({label, icon, ...props}) => {
+    return(
+      <View>
+
+      </View>
+    );
+  };
   export default Login;
