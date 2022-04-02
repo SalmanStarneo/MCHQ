@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 import {View, Text, Image, TextInput, TouchableOpacity} from 'react-native';
-import {Constants} from 'expo-constants';
+import Constants from 'expo-constants';
 
 const StatusBarHeight = Constants.StatusBarHeight;
 

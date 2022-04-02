@@ -2,11 +2,7 @@ import React,{useState} from 'react';
 import { View } from 'react-native';
 import {Ionicons, Octicons} from '@expo/vector-icons';
 import { Formik } from 'formik';
-import{
-  StyledContainer, InnerContainer, PageLogo,
-  PageTitle, StyledFormArea, LeftSideIcon, 
-  StyledInputLabel, StyledTextInput, RightSideIcon, Colors
-} from './../styles/style';
+import{StyledContainer, InnerContainer, PageLogo, PageTitle, StyledFormArea, LeftSideIcon, StyledInputLabel, StyledTextInput, RightSideIcon, Colors} from '../style.js'
 
 const {brand, darkViolet} = Colors;
 
@@ -18,12 +14,11 @@ const Login= ({navigation}) =>{
           <PageLogo resizeMode="cover" source={require('../../assets/mchq.png')}/>
           <PageTitle>Mobile College Helper QR</PageTitle>
         </InnerContainer>
-        <Text style={styles.texts}>MCHQ Login app screen</Text>
         <Formik
           initialValues={{email:'', password:''}}
           onSubmit={(values) => {console.log(values);}}
         >
-          {(handleChange, handleBlur, handleSubmit, values) => 
+          {({handleChange, handleBlur, handleSubmit, values}) => (
           <StyledFormArea>
             <MyTextInput
               label="Email:"
@@ -48,9 +43,8 @@ const Login= ({navigation}) =>{
               hidePassword={hidePassword}
               setHidePassword={setHidePassword}
             />
-            </StyledFormArea>}
+            </StyledFormArea>)}
         </Formik>
-        <Button title='log in' onPress={() => navigation.navigate("Main")}/>
       </StyledContainer>
     );
   };

@@ -1,15 +1,12 @@
 import React from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
 
-// const NavigationToScreen = props =>{
-//     props.navigation.navigate('login');
-// }
 
 const Main= ({navigation}) =>{
     return (
       <View style={styles.container}>
         <Text style={styles.texts}>MCHQ first screen</Text>
-        <Button title='Back to Login' onPress={() => navigation.navigate("Login")}/>
+        {/* <Button title='Back to Login' onPress={() => navigation.navigate("Login")}/> */}
       </View>
     );
   }

@@ -17,6 +17,7 @@ const Login= ({navigation}) =>{
         onChangeText={setPostText}
       />
         <Button style={styles.buttons} title='log in' onPress={() => navigation.navigate("Main",{params: { post: postText },merge:true})}/>
+        <Button title='log in' onPress={() => navigation.navigate("Main")}/>
       </View>
     );
   }
@@ -41,3 +42,5 @@ const Login= ({navigation}) =>{
   });
 
   export default Login;
+
+  
