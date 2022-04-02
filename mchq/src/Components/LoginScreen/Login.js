@@ -1,12 +1,14 @@
 import React from 'react';
 import { View } from 'react-native';
-// import { withSafeAreaInsets } from 'react-native-safe-area-context';
+import {Octicons} from '@expo/vector-icons';
 import { Formik } from 'formik';
 import{
   StyledContainer, InnerContainer, PageLogo,
   PageTitle, StyledFormArea, LeftSideIcon, 
-  StyledInputLabel, StyledTextInput, RightSideIcon
+  StyledInputLabel, StyledTextInput, RightSideIcon, Colors
 } from './../styles/style';
+
+const {brand, darkViolet} = Colors;
 
 const Login= ({navigation}) =>{
     return (
@@ -20,7 +22,29 @@ const Login= ({navigation}) =>{
           initialValues={{email:'', password:''}}
           onSubmit={(values) => {console.log(values);}}
         >
-          {(handleChange, handleBlur, handleSubmit, values) => <StyledFormArea></StyledFormArea>}
+          {(handleChange, handleBlur, handleSubmit, values) => 
+          <StyledFormArea>
+            <MyTextInput
+              label="Email:"
+              icon="mail"
+              placeholder="user email"
+              placeholderTextColor={darkViolet}
+              onChangeText={handleChange('email')}
+              onBlur={handleBlur('email')}
+              value={values.email}
+              keyboardType="email-address"
+            />
+            <MyTextInput
+              label="Password:"
+              icon="lock"
+              placeholder="**********"
+              placeholderTextColor={darkViolet}
+              onChangeText={handleChange('password')}
+              onBlur={handleBlur('password')}
+              value={values.password}
+              secureTextEntry={true}
+            />
+            </StyledFormArea>}
         </Formik>
         <Button title='log in' onPress={() => navigation.navigate("Main")}/>
       </StyledContainer>
@@ -30,7 +54,11 @@ const Login= ({navigation}) =>{
   const MyTextInput = ({label, icon, ...props}) => {
     return(
       <View>
-
+        <LeftSideIcon>
+          <Octicons name={icon} size={30} color={brand}/>
+        </LeftSideIcon>
+        <StyledInputLabel>{label}</StyledInputLabel> 
+        <StyledTextInput {...props}/>
       </View>
     );
   };
