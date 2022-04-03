@@ -15,7 +15,7 @@ const {brand, darkViolet} = Colors;
 const Register= ({navigation}) =>{
     const [hidePassword, setHidePassword] = useState(true);
     const [show, setShow] = useState(false);
-    const [date, setDate] = useState(new Date(2000, 0, 1));
+    const [date, setDate] = useState(new Date(2010, 8, 9));
 
     //setting date chosen by user
     const [dob, setDob]=useState();
@@ -75,13 +75,14 @@ const Register= ({navigation}) =>{
             <MyTextInput
               label="Date of Birth:"
               icon="calendar"
-              placeholder="YYYY/MM/DD"
+              placeholder="MM - DD - YYYY"
               placeholderTextColor={darkViolet}
               onChangeText={handleChange('dateOfBirth')}
               onBlur={handleBlur('dateOfBirth')}
               value={dob ? dob.toDateString() : ''}
               isDate={true}
               editable={false}
+              showDatePicker={showDatePicker}
             />
             <MyTextInput
               label="Password:"
@@ -95,7 +96,6 @@ const Register= ({navigation}) =>{
               isPassword={true}
               hidePassword={hidePassword}
               setHidePassword={setHidePassword}
-              showDatePicker={showDatePicker}
             />
                         <MyTextInput
               label="Confirm Password:"
