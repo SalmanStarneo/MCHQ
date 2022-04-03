@@ -11,7 +11,7 @@ import{StyledContainer, InnerContainer, PageLogo,
 
 const {brand, darkViolet} = Colors;
 
-const Login= ({navigation}) =>{
+const Register= ({navigation}) =>{
     const [hidePassword, setHidePassword] = useState(true);
     return (
       <StyledContainer>
@@ -49,11 +49,6 @@ const Login= ({navigation}) =>{
               setHidePassword={setHidePassword}
             />
             <AlertBox>...</AlertBox>
-            <StyledButton onPress={handleSubmit}>
-              <ButtonText>
-                Login
-              </ButtonText>
-            </StyledButton>
             <SplitLine/>
             <StyledButton onPress={handleSubmit}>
               <ButtonText>
@@ -87,4 +82,4 @@ const Login= ({navigation}) =>{
     );
   };
 
-  export default Login;
+  export default Register;
