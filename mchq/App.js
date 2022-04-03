@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
 import Main from './src/Components/MainScreen/Main'
 import Login from './src/Components/LoginScreen/Login'
+import Register from './src/Components/RegisterScreen/Register';
 
 // export default function App() {
 //   return (
@@ -32,6 +33,7 @@ function App() {
       <Stack.Navigator initialRouteName='LoginScreen'>
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Main" component={Main} />
+        <Stack.Screen name="Register" component={Register} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -6,8 +6,8 @@ import{StyledContainer, InnerContainer, PageLogo,
    PageTitle, StyledFormArea, LeftSideIcon,
     StyledInputLabel, StyledTextInput, RightSideIcon,
      Colors, InputContainer, StyledButton,
-      ButtonText, AlertBox, SplitLine,
-     ExtraView, ExtraText, SubTitle} from '../style.js'
+      ButtonText, AlertBox, SplitLine, SubTitle} from '../style.js'
+import { StatusBar } from 'expo-status-bar';
 
 const {brand, darkViolet} = Colors;
 
@@ -15,12 +15,12 @@ const Login= ({navigation}) =>{
     const [hidePassword, setHidePassword] = useState(true);
     return (
       <StyledContainer>
-        <InnerContainer>
-          <PageLogo resizeMode="cover" source={require('../../assets/mchq.png')}/>
-          <PageTitle>Mobile College Helper QR</PageTitle>
-          <SplitLine/>
-          <SubTitle>Login-Screen</SubTitle>
-        </InnerContainer>
+          <InnerContainer>
+            <PageLogo resizeMode="cover" source={require('../../assets/mchq.png')}/>
+            <PageTitle>Mobile College Helper QR</PageTitle>
+            <SplitLine/>
+            <SubTitle>Login-Screen</SubTitle>
+          </InnerContainer>
         <Formik
           initialValues={{email:'', password:''}}
           onSubmit={(values) => {console.log(values);}}
@@ -54,13 +54,13 @@ const Login= ({navigation}) =>{
             <AlertBox>...</AlertBox>
             <StyledButton onPress={handleSubmit}>
               <ButtonText>
-                Login
+                Sign in
               </ButtonText>
             </StyledButton>
             <SplitLine/>
-            <StyledButton onPress={handleSubmit}>
+            <StyledButton onPress={() => navigation.navigate("Register")}>
               <ButtonText>
-                Register
+                Register if you need an account
               </ButtonText>
             </StyledButton>
             </StyledFormArea>)}

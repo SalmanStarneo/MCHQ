@@ -2,12 +2,12 @@ import styled from 'styled-components/native';
 import {View, Text, Image, TextInput, TouchableOpacity} from 'react-native';
 import Constants from 'expo-constants';
 
-const StatusBarHeight = Constants.StatusBarHeight;
+const StatusBarHeight = Constants.statusBarHeight;
 
 export const Colors = {
-    primary:'#99ccff',
+    primary:'#82ade8',
     secondary:'#cfcfeb',
-    tertiary:'#1E90FF',
+    tertiary:'#0000CC',
     darkViolet:'#9400D3',
     brand:'#F8F8FF',
     green:'#3CB371',
@@ -19,7 +19,8 @@ const {primary, secondary, tertiary, darkViolet, brand, green, red}= Colors;
 export const StyledContainer = styled.View`
     flex: 1;
     padding: 25px;
-    padding-top: 10px;
+    padding-top: ${StatusBarHeight}px;
+    margin-vertical:-1%;
     background-color: ${primary};
 `
 
