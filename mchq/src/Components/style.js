@@ -5,7 +5,7 @@ import Constants from 'expo-constants';
 const StatusBarHeight = Constants.StatusBarHeight;
 
 export const Colors = {
-    primary:'#4682B4',
+    primary:'#99ccff',
     secondary:'#cfcfeb',
     tertiary:'#1E90FF',
     darkViolet:'#9400D3',
@@ -47,20 +47,23 @@ export const PageLogo = styled.Image`
     width: 100px;
 `
 export const PageTitle = styled.Text`
-    font-size: 30px;
+    font-size: 25px;
     text-align: center;
     font-weight: bold;
     color: ${brand};
     padding: 5px;
 `
 export const SubTitle = styled.Text`
-    font-size: 18px;
+    font-size: 17px;
     margin-bottom: 10px;
+    padding-bottom: 5px;
     letter-spacing: 1px;
     font-weight: bold;
 `
 export const StyledFormArea = styled.View`
     width: 90%;
+    margin-horizontal: 5px;
+    margin-vertical: -15px;
 `
 export const StyledTextInput = styled.TextInput`
     background-color: ${secondary};
@@ -76,9 +79,10 @@ export const StyledTextInput = styled.TextInput`
 `
 
 export const StyledInputLabel = styled.Text`
-    font-size: 13px;
+    font-size: 15px;
     color: ${tertiary};
     text-align: left;
+    font-weight: bold;
 `
 export const InputContainer = styled.View`
     justify-content: center;
@@ -108,8 +112,9 @@ export const StyledButton = styled.TouchableOpacity`
 `
 
 export const ButtonText = styled.Text`
-    color: ${primary};
+    color: ${green};
     font-size: 16px;
+    font-weight: bold;
 `
 
 export const AlertBox = styled.Text`

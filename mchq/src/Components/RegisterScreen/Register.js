@@ -7,7 +7,7 @@ import{StyledContainer, InnerContainer, PageLogo,
     StyledInputLabel, StyledTextInput, RightSideIcon,
      Colors, InputContainer, StyledButton,
       ButtonText, AlertBox, SplitLine,
-     ExtraView, ExtraText} from '../style.js'
+     ExtraView, ExtraText, SubTitle} from '../style.js'
 
 const {brand, darkViolet} = Colors;
 
@@ -18,6 +18,7 @@ const Register= ({navigation}) =>{
         <InnerContainer>
           <PageLogo resizeMode="cover" source={require('../../assets/mchq.png')}/>
           <PageTitle>Mobile College Helper QR</PageTitle>
+          <SubTitle>Register</SubTitle>
         </InnerContainer>
         <Formik
           initialValues={{email:'', password:''}}
