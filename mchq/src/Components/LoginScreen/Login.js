@@ -23,7 +23,8 @@ const Login= ({navigation}) =>{
             </InnerContainer>
           <Formik
             initialValues={{email:'', password:''}}
-            onSubmit={(values) => {console.log(values);}}
+            onSubmit={(values) => {console.log(values); navigation.navigate('Main')}}
+            
           >
             
             {({handleChange, handleBlur, handleSubmit, values}) => (

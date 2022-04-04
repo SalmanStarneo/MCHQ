@@ -18,18 +18,16 @@ const {primary, secondary, tertiary, darkViolet, brand, green, red}= Colors;
 
 export const StyledContainer = styled.View`
     flex: 1;
-    padding: 25px;
-    padding-top: ${StatusBarHeight}px;
-    margin-vertical:-1%;
+    padding: 30px;
+    padding-top: 40px;
     background-color: ${primary};
+
 `
 
 export const InnerContainer = styled.View`
     flex: 1;
     width: 100%;
     align-items: center;
-    margin-vertical:1px;
-
     ${(props) => props.main && `
         background-color: ${red};  
     `}
@@ -143,7 +141,7 @@ export const StyledButton = styled.TouchableOpacity`
     border-radius: 5px;
     height: 60px;
     margin-left:25px;
-    margin-vertical: 5px;
+    margin-vertical: 20px;
 `
 
 export const ButtonText = styled.Text`
