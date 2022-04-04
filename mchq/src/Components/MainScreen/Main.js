@@ -20,7 +20,7 @@ const Main= ({navigation}) =>{
           <SplitLine/>
           <SubTitle>Main-Screen</SubTitle>
           <StyledFormArea>
-            <UserImage resizeMode="cover" source={require('../../assets/mchq.png')}/>
+            <UserImage resizeMode="cover" source={require('../../assets/salman.jpg')}/>
             <SplitLine/>
               <StyledButton onPress={()=>navigation.navigate("Login")}>
                 <ButtonText>
