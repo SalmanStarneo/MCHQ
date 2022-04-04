@@ -7,65 +7,66 @@ import{StyledContainer, InnerContainer, PageLogo,
     StyledInputLabel, StyledTextInput, RightSideIcon,
      Colors, InputContainer, StyledButton,
       ButtonText, AlertBox, SplitLine, SubTitle} from '../style.js'
-import { StatusBar } from 'expo-status-bar';
-
+import KeyboardWrapper from '../KeyboardWrapper';
 const {brand, darkViolet} = Colors;
 
 const Login= ({navigation}) =>{
     const [hidePassword, setHidePassword] = useState(true);
     return (
-      <StyledContainer>
-          <InnerContainer>
-            <PageLogo resizeMode="cover" source={require('../../assets/mchq.png')}/>
-            <PageTitle>Mobile College Helper QR</PageTitle>
-            <SplitLine/>
-            <SubTitle>Login-Screen</SubTitle>
-          </InnerContainer>
-        <Formik
-          initialValues={{email:'', password:''}}
-          onSubmit={(values) => {console.log(values);}}
-        >
-          
-          {({handleChange, handleBlur, handleSubmit, values}) => (
-          <StyledFormArea>
-            <MyTextInput
-              label="Email:"
-              icon="mail"
-              placeholder="user email"
-              placeholderTextColor={darkViolet}
-              onChangeText={handleChange('email')}
-              onBlur={handleBlur('email')}
-              value={values.email}
-              keyboardType="email-address"
-            />
-            <MyTextInput
-              label="Password:"
-              icon="lock"
-              placeholder="**********"
-              placeholderTextColor={darkViolet}
-              onChangeText={handleChange('password')}
-              onBlur={handleBlur('password')}
-              value={values.password}
-              secureTextEntry={hidePassword}
-              isPassword={true}
-              hidePassword={hidePassword}
-              setHidePassword={setHidePassword}
-            />
-            <AlertBox>...</AlertBox>
-            <StyledButton onPress={handleSubmit}>
-              <ButtonText>
-                Sign in
-              </ButtonText>
-            </StyledButton>
-            <SplitLine/>
-            <StyledButton onPress={() => navigation.navigate("Register")}>
-              <ButtonText>
-                Register if you need an account
-              </ButtonText>
-            </StyledButton>
-            </StyledFormArea>)}
-        </Formik>
-      </StyledContainer>
+      <KeyboardWrapper>
+        <StyledContainer>
+            <InnerContainer>
+              <PageLogo resizeMode="cover" source={require('../../assets/mchq.png')}/>
+              <PageTitle>Mobile College Helper QR</PageTitle>
+              <SplitLine/>
+              <SubTitle>Login-Screen</SubTitle>
+            </InnerContainer>
+          <Formik
+            initialValues={{email:'', password:''}}
+            onSubmit={(values) => {console.log(values);}}
+          >
+            
+            {({handleChange, handleBlur, handleSubmit, values}) => (
+            <StyledFormArea>
+              <MyTextInput
+                label="Email:"
+                icon="mail"
+                placeholder="user email"
+                placeholderTextColor={darkViolet}
+                onChangeText={handleChange('email')}
+                onBlur={handleBlur('email')}
+                value={values.email}
+                keyboardType="email-address"
+              />
+              <MyTextInput
+                label="Password:"
+                icon="lock"
+                placeholder="**********"
+                placeholderTextColor={darkViolet}
+                onChangeText={handleChange('password')}
+                onBlur={handleBlur('password')}
+                value={values.password}
+                secureTextEntry={hidePassword}
+                isPassword={true}
+                hidePassword={hidePassword}
+                setHidePassword={setHidePassword}
+              />
+              <AlertBox>...</AlertBox>
+              <StyledButton onPress={handleSubmit}>
+                <ButtonText>
+                  Sign in
+                </ButtonText>
+              </StyledButton>
+              <SplitLine/>
+              <StyledButton onPress={() => navigation.navigate("Register")}>
+                <ButtonText>
+                  Register if you need an account
+                </ButtonText>
+              </StyledButton>
+              </StyledFormArea>)}
+          </Formik>
+        </StyledContainer>
+      </KeyboardWrapper>
     );
   };
 

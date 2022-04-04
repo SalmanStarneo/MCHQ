@@ -29,6 +29,15 @@ export const InnerContainer = styled.View`
     width: 100%;
     align-items: center;
     margin-vertical:1px;
+
+    ${(props) => props.main && `
+        background-color: ${red};  
+    `}
+`
+export const MainContainer = styled(InnerContainer)`
+    padding: 25px;
+    padding-top: 10px;
+    justify-content: center;
 `
 export const ExtraView = styled.View`
     flex-direction: row;
@@ -43,6 +52,21 @@ export const ExtraText = styled.Text`
     color: ${tertiary};
 `
 
+export const UserImage = styled.Image`
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    border-radius: 25px;
+    border-width: 1px;
+    border-color: ${secondary};
+    margin-bottom: 10px;
+    margin-top: 10px;
+`
+export const HeaderImage = styled.Image`
+    height: 50%;
+    min-width: 100%;
+`
+
 export const PageLogo = styled.Image`
     height: 150px;
     width: 100px;
@@ -53,6 +77,11 @@ export const PageTitle = styled.Text`
     font-weight: bold;
     color: ${brand};
     padding: 5px;
+
+    ${(props) => props.main && `
+        font-size: 35px;
+        color: ${green};  
+    `}
 `
 export const SubTitle = styled.Text`
     font-size: 17px;
@@ -60,6 +89,11 @@ export const SubTitle = styled.Text`
     padding-bottom: 5px;
     letter-spacing: 1px;
     font-weight: bold;
+
+    ${(props) => props.main && `
+        margin-bottom:5px;
+        font-weight: normal;    
+    `}
 `
 export const StyledFormArea = styled.View`
     width: 90%;

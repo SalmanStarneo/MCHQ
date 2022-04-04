@@ -3,6 +3,7 @@ import { View, TouchableOpacity } from 'react-native';
 import {Ionicons, Octicons} from '@expo/vector-icons';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Formik } from 'formik';
+import KeyboardWrapper from '../KeyboardWrapper';
 import{StyledContainer, InnerContainer, PageLogo,
    PageTitle, StyledFormArea, LeftSideIcon,
     StyledInputLabel, StyledTextInput, RightSideIcon,
@@ -31,101 +32,103 @@ const Register= ({navigation}) =>{
         setShow(true);
     }
     return (
-      <StyledContainer>
-            {/* <InnerContainer>
-            <PageLogo resizeMode="cover" source={require('../../assets/mchq.png')}/>
-            <PageTitle>Mobile College Helper QR</PageTitle>
-            <SubTitle>Register</SubTitle>
-            </InnerContainer> */}
-        {show && (
-        <DateTimePicker
-          testID="dateTimePicker"
-          value={date}
-          mode='date'
-          is24Hour={true}
-          display='default'
-          onChange={onChange}
-        />
-      )}
-        <Formik
-          initialValues={{username:'', email:'', dateOfBirth:'',password:'', confirmPassword:''}}
-          onSubmit={(values) => {console.log(values);}}
-        >
-          {({handleChange, handleBlur, handleSubmit, values}) => (
-          <StyledFormArea>
-            <MyTextInput
-              label="Username:"
-              icon="star"
-              placeholder="username"
-              placeholderTextColor={darkViolet}
-              onChangeText={handleChange('username')}
-              onBlur={handleBlur('username')}
-              value={values.username}
+      <KeyboardWrapper>       
+        <StyledContainer>
+                <InnerContainer>
+                <PageLogo resizeMode="cover" source={require('../../assets/mchq.png')}/>
+                <PageTitle>Mobile College Helper QR</PageTitle>
+                <SubTitle>Register</SubTitle>
+                </InnerContainer>
+            {show && (
+            <DateTimePicker
+            testID="dateTimePicker"
+            value={date}
+            mode='date'
+            is24Hour={true}
+            display='default'
+            onChange={onChange}
             />
-            <MyTextInput
-              label="Email:"
-              icon="mail"
-              placeholder="user email"
-              placeholderTextColor={darkViolet}
-              onChangeText={handleChange('email')}
-              onBlur={handleBlur('email')}
-              value={values.email}
-              keyboardType="email-address"
-            />
-            <MyTextInput
-              label="Date of Birth:"
-              icon="calendar"
-              placeholder="MM - DD - YYYY"
-              placeholderTextColor={darkViolet}
-              onChangeText={handleChange('dateOfBirth')}
-              onBlur={handleBlur('dateOfBirth')}
-              value={dob ? dob.toDateString() : ''}
-              isDate={true}
-              editable={false}
-              showDatePicker={showDatePicker}
-            />
-            <MyTextInput
-              label="Password:"
-              icon="lock"
-              placeholder="**********"
-              placeholderTextColor={darkViolet}
-              onChangeText={handleChange('password')}
-              onBlur={handleBlur('password')}
-              value={values.password}
-              secureTextEntry={hidePassword}
-              isPassword={true}
-              hidePassword={hidePassword}
-              setHidePassword={setHidePassword}
-            />
-                        <MyTextInput
-              label="Confirm Password:"
-              icon="lock"
-              placeholder="**********"
-              placeholderTextColor={darkViolet}
-              onChangeText={handleChange('confirmPassword')}
-              onBlur={handleBlur('confirmPassword')}
-              value={values.confirmPassword}
-              secureTextEntry={hidePassword}
-              isPassword={true}
-              hidePassword={hidePassword}
-              setHidePassword={setHidePassword}
-            />
-            <AlertBox>...</AlertBox>
-            
-            <StyledButton onPress={() => navigation.navigate("Login")}>
-              <ButtonText>
-                Sign up
-              </ButtonText>
-            </StyledButton>
-            <SplitLine/>
-            {/* <StyledButton onPress={() => navigation.goBack()}>
-              <ButtonText>
-                Log in if you have an account
-              </ButtonText>
-            </StyledButton> */}
-            </StyledFormArea>)}
-        </Formik>
-      </StyledContainer>
+        )}
+            <Formik
+            initialValues={{username:'', email:'', dateOfBirth:'',password:'', confirmPassword:''}}
+            onSubmit={(values) => {console.log(values);}}
+            >
+            {({handleChange, handleBlur, handleSubmit, values}) => (
+            <StyledFormArea>
+                <MyTextInput
+                label="Username:"
+                icon="star"
+                placeholder="username"
+                placeholderTextColor={darkViolet}
+                onChangeText={handleChange('username')}
+                onBlur={handleBlur('username')}
+                value={values.username}
+                />
+                <MyTextInput
+                label="Email:"
+                icon="mail"
+                placeholder="user email"
+                placeholderTextColor={darkViolet}
+                onChangeText={handleChange('email')}
+                onBlur={handleBlur('email')}
+                value={values.email}
+                keyboardType="email-address"
+                />
+                <MyTextInput
+                label="Date of Birth:"
+                icon="calendar"
+                placeholder="MM - DD - YYYY"
+                placeholderTextColor={darkViolet}
+                onChangeText={handleChange('dateOfBirth')}
+                onBlur={handleBlur('dateOfBirth')}
+                value={dob ? dob.toDateString() : ''}
+                isDate={true}
+                editable={false}
+                showDatePicker={showDatePicker}
+                />
+                <MyTextInput
+                label="Password:"
+                icon="lock"
+                placeholder="**********"
+                placeholderTextColor={darkViolet}
+                onChangeText={handleChange('password')}
+                onBlur={handleBlur('password')}
+                value={values.password}
+                secureTextEntry={hidePassword}
+                isPassword={true}
+                hidePassword={hidePassword}
+                setHidePassword={setHidePassword}
+                />
+                            <MyTextInput
+                label="Confirm Password:"
+                icon="lock"
+                placeholder="**********"
+                placeholderTextColor={darkViolet}
+                onChangeText={handleChange('confirmPassword')}
+                onBlur={handleBlur('confirmPassword')}
+                value={values.confirmPassword}
+                secureTextEntry={hidePassword}
+                isPassword={true}
+                hidePassword={hidePassword}
+                setHidePassword={setHidePassword}
+                />
+                <AlertBox>...</AlertBox>
+                
+                <StyledButton onPress={() => navigation.navigate("Main")}>
+                <ButtonText>
+                    Sign up
+                </ButtonText>
+                </StyledButton>
+                <SplitLine/>
+                {/* <StyledButton onPress={() => navigation.goBack()}>
+                <ButtonText>
+                    Log in if you have an account
+                </ButtonText>
+                </StyledButton> */}
+                </StyledFormArea>)}
+            </Formik>
+        </StyledContainer>
+      </KeyboardWrapper> 
     );
   };
 
