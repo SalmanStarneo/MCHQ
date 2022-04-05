@@ -51,7 +51,7 @@ router.post('/signup', (req,res) => {
             } else {
                 //create new user
                 const saltRounds = 10;
-                bcrypt.hash(password, saltRounds).then(handlePassword =>{
+                bcrypt.hash(password, saltRounds).then(hashedPassword =>{
                     const newUser = new User({
                         name,
                         email,
@@ -61,9 +61,9 @@ router.post('/signup', (req,res) => {
 
                     newUser.save().then(result => {
                         res.json({
-                            status:"Pass",
+                            status:"SUCCESS",
                             message: "Sign Up Successful",
-                            date: result,
+                            data: result
                         })
                     }).catch(err => {
                         res.json({
@@ -93,6 +93,31 @@ router.post('/login', (req,res) => {
     let {email,password} = req.body;
     email=email.trim();
     password=password.trim();
+
+    if(email == ""||password == "")
+    {
+        res.json({
+            status: "FAIL",
+            message: "empty input fields!!"
+        })
+    }
+    else{
+        User.find({email}).then(data => {
+
+            if(data){
+                const hashedPassword = data[0].password;
+                bcrypt.compare(password,hashedPassword).then(result => {
+                    if(result){
+                        res.json({
+                            status:"Pass",
+                            message:"Login done!",
+                            data:data
+                        })
+                    }
+                })
+            }
+        })
+    }
 })
 
 module.exports = router;
