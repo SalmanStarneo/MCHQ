@@ -50,6 +50,34 @@ router.post('/signup', (req,res) => {
                 })
             } else {
                 //create new user
+                const saltRounds = 10;
+                bcrypt.hash(password, saltRounds).then(handlePassword =>{
+                    const newUser = new User({
+                        name,
+                        email,
+                        password: hashedPassword,
+                        dateOfBirth
+                    });
+
+                    newUser.save().then(result => {
+                        res.json({
+                            status:"Pass",
+                            message: "Sign Up Successful",
+                            date: result,
+                        })
+                    }).catch(err => {
+                        res.json({
+                            status: "FAIL",
+                            message: "Error happened while saving the account"
+                        })
+                    })
+
+                }).catch(err => {
+                res.json({
+                status: "FAIL",
+                message: "Error happened while hashing password"
+            })
+        })
             }
         }).catch(err => {
             res.json({
