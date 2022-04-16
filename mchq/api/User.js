@@ -58,10 +58,10 @@ router.post('/signup', (req,res) => {
                         password: hashedPassword,
                         dateOfBirth
                     });
-
+                    
                     newUser.save().then(result => {
                         res.json({
-                            status:"SUCCESS",
+                            status:"PASS",
                             message: "Sign Up Successful",
                             data: result
                         })
@@ -104,20 +104,107 @@ router.post('/login', (req,res) => {
     else{
         User.find({email}).then(data => {
 
-            if(data){
+            if(data.length){
                 const hashedPassword = data[0].password;
                 bcrypt.compare(password,hashedPassword).then(result => {
                     if(result){
                         res.json({
-                            status:"Pass",
+                            status:"PASS",
                             message:"Login done!",
                             data:data
                         })
+                    }else{
+
+                        res.json({
+                            status:"FAIL",
+                            message:"Invalid password entry!"
+                        })
                     }
+                }).catch((err) => {
+                    res.json({
+                        status:"FAIL",
+                        message:"Password comparison error has occurred!"
+                    })
+                })
+            }else{
+
+                res.json({
+                    status:"FAIL",
+                    message:"Invalid inputs!"
                 })
             }
+        }).catch((err) => {
+            res.json({
+                status:"FAIL",
+                message:"error has occurred while checking for the account!"
+            })
         })
     }
+})
+
+// push the user inputs into the sub document and display it back as QR code
+router.post('/generateQR', (req,res) => {
+    let {qrTitle,qrContent,email} = req.body;
+    email=email.trim();
+    qrTitleInput=qrTitle.trim();
+    qrContentInput=qrContent.trim();    
+
+    if(qrTitle == ""||qrContent == "")
+    {
+        res.json({
+            status: "FAIL",
+            message: "empty input fields!!"
+        })
+    }else if(!/^[a-zA-Z]*$/.test(qrTitle))
+    {
+        res.json({
+            status: "FAIL",
+            message: "Wrong Type fields!!"
+        })     
+    }
+    else{
+        //create new user qr code item
+        User.findOne({email}).then((listResult) =>{
+            console.log(listResult);
+            listResult.qrList.push({qrTitle:qrTitleInput, qrContent:qrContentInput});
+            listResult.save().then((data) => {
+                res.json({
+                    status: "PASS",
+                    message: "WORKED!!",
+                    data:data
+                })
+            }
+            );
+
+        }).catch((err) =>{
+            res.json({
+                status: "FAIL",
+                message: "Error!!: "+err
+            })
+        })
+
+    }
+})
+
+// get information from the user's sub document 
+router.get('/ListQR', (req,res) => {
+    let email = req.query.email;
+ 
+    User.findOne({email}).populate("qrList").then((listResult) =>{
+        if(listResult){
+            res.json({
+                data:listResult
+            })
+            console.log(listResult+ " DB");
+        }
+    }).catch((err) =>{
+        res.json({
+            status: "FAIL",
+            message: "Error!!: "+err
+        })
+    })
+
+    
 })
 
 module.exports = router;
